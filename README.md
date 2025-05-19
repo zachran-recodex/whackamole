@@ -1,62 +1,61 @@
-# Whack-A-Mole Game with PHP Authentication
+# Game Whack-A-Mole dengan Sistem Otentikasi PHP
 
-A classic Whack-A-Mole game enhanced with PHP MySQL authentication to track player scores and provide leaderboards.
+Game klasik Whack-A-Mole yang telah ditingkatkan dengan sistem otentikasi PHP MySQL untuk melacak skor pemain dan menyediakan papan peringkat.
 
 ![Whack-A-Mole Game](css/hammer.png)
 
-## Features
+## Fitur
 
-- **Classic Whack-A-Mole Gameplay**: Hit moles as they appear from holes to score points
-- **Multiple Difficulty Levels**: Easy, medium, and hard modes
-- **Customizable Settings**: Control mole speed, game duration, and sound effects
-- **User Authentication System**:
-  - User registration and login
-  - Password reset functionality
-  - User profile management
-- **Score Tracking**:
-  - Personal score history
-  - Global leaderboards
-  - Score filtering by difficulty
-- **Responsive Design**: Playable on desktop and mobile devices
+- **Gameplay Whack-A-Mole Klasik**: Pukul tikus tanah saat muncul dari lubang untuk mendapatkan poin
+- **Beberapa Tingkat Kesulitan**: Mode mudah, sedang, dan sulit
+- **Pengaturan yang Dapat Disesuaikan**: Kontrol kecepatan tikus, durasi permainan, dan efek suara
+- **Sistem Otentikasi Pengguna**:
+  - Pendaftaran dan login pengguna
+  - Fitur reset kata sandi
+  - Pengelolaan profil pengguna
+- **Pelacakan Skor**:
+  - Riwayat skor pribadi
+  - Papan peringkat global
+  - Penyaringan skor berdasarkan tingkat kesulitan
+- **Desain Responsif**: Dapat dimainkan di desktop dan perangkat mobile
 
-## Requirements
+## Persyaratan Sistem
 
-- PHP 7.4 or higher
-- MySQL 5.7 or higher
-- MAMP, XAMPP, or similar local development environment
-- Web browser with JavaScript enabled
+- PHP 7.4 atau lebih tinggi
+- MySQL 5.7 atau lebih tinggi
+- XAMPP atau lingkungan pengembangan lokal serupa
+- Browser web dengan JavaScript diaktifkan
 
-## Installation
+## Instalasi dengan XAMPP
 
-### Using MAMP (Recommended)
+1. **Instal XAMPP**:
+   - Unduh dan instal [XAMPP](https://www.apachefriends.org/download.html) jika Anda belum memilikinya
+   - Pastikan Anda menginstal versi yang menyertakan PHP dan MySQL
 
-1. **Install MAMP**:
-   - Download and install [MAMP](https://www.mamp.info/) if you haven't already
+2. **Unduh atau Clone Project**:
+   - Unduh file ZIP atau clone repositori ini
+   - Ekstrak file ke folder htdocs XAMPP Anda (biasanya di `C:\xampp\htdocs\whackamole`)
 
-2. **Clone or Download the Project**:
-   - Download the ZIP file or clone the repository
-   - Extract files to your MAMP htdocs folder (typically `/Applications/MAMP/htdocs/whackamole`)
+3. **Mulai Layanan XAMPP**:
+   - Buka XAMPP Control Panel
+   - Klik tombol "Start" untuk Apache dan MySQL
+   - Pastikan kedua layanan berjalan (indikator akan menjadi hijau)
 
-3. **Start MAMP Services**:
-   - Launch MAMP application
-   - Start the Apache and MySQL servers
-   - Ensure MySQL is running on port 8889 (default for MAMP)
+4. **Akses Game**:
+   - Buka browser web Anda
+   - Navigasikan ke `http://localhost/whackamole`
+   - Database dan tabel akan otomatis dibuat pada akses pertama
 
-4. **Access the Game**:
-   - Open your web browser
-   - Navigate to `http://localhost:8888/whackamole` (adjust the port if your MAMP uses a different one)
-   - The database and tables will be automatically created on first access
+## Pengaturan Manual Database (Opsional)
 
-### Manual Database Setup (Optional)
+Jika Anda lebih suka menyiapkan database secara manual daripada membiarkan aplikasi melakukannya secara otomatis:
 
-If you prefer to set up the database manually rather than letting the application do it automatically:
+1. **Buat Database**:
+   - Buka phpMyAdmin (biasanya di `http://localhost/phpmyadmin`)
+   - Buat database baru bernama `whackamole_game`
 
-1. **Create the Database**:
-   - Open phpMyAdmin (usually at `http://localhost:8888/phpMyAdmin`)
-   - Create a new database called `whackamole_game`
-
-2. **Import SQL Schema**:
-   - Use the following SQL to create the required tables:
+2. **Import Skema SQL**:
+   - Gunakan SQL berikut untuk membuat tabel yang diperlukan:
 
 ```sql
 CREATE TABLE users (
@@ -80,51 +79,51 @@ CREATE TABLE scores (
 );
 ```
 
-## Configuration
+## Konfigurasi
 
-### Database Settings
+### Pengaturan Database
 
-If you need to modify the database connection settings (different port, username, or password):
+Jika Anda perlu mengubah pengaturan koneksi database (port berbeda, username, atau password):
 
-1. Open `config/database.php`
-2. Update the following constants:
+1. Buka file `config/database.php`
+2. Perbarui konstanta berikut:
    ```php
    define('DB_HOST', 'localhost');
    define('DB_NAME', 'whackamole_game');
    define('DB_USER', 'root');
-   define('DB_PASS', 'root'); // Change if your MAMP password is different
-   define('DB_PORT', '8889'); // Change if your MySQL port is different
+   define('DB_PASS', ''); // Password default XAMPP biasanya kosong
+   define('DB_PORT', '3306'); // Port default MySQL di XAMPP
    ```
 
-### Game Settings
+### Pengaturan Game
 
-The game has several customizable settings that can be adjusted in `js/script.js`:
+Game ini memiliki beberapa pengaturan yang dapat disesuaikan di `js/script.js`:
 
-- Mole appearance speed
-- Game duration
-- Sound effects
+- Kecepatan munculnya tikus tanah
+- Durasi permainan
+- Efek suara
 
-## Usage
+## Cara Penggunaan
 
-### Playing as a Guest
+### Bermain sebagai Tamu
 
-1. Click "Play as Guest" on the login screen
-2. Select a difficulty level
-3. Click "START" to begin playing
-4. Hit moles as they appear to score points
+1. Klik "Play as Guest" pada layar login
+2. Pilih tingkat kesulitan
+3. Klik "START" untuk mulai bermain
+4. Pukul tikus tanah saat muncul untuk mendapatkan poin
 
-### Playing as a Registered User
+### Bermain sebagai Pengguna Terdaftar
 
-1. Register a new account or log in with existing credentials
-2. Select a difficulty level
-3. Play the game
-4. Your score will be automatically saved to your profile
-5. View your scores and global rankings on the dashboard
+1. Daftar akun baru atau masuk dengan kredensial yang ada
+2. Pilih tingkat kesulitan
+3. Mainkan game
+4. Skor Anda akan otomatis disimpan ke profil Anda
+5. Lihat skor Anda dan peringkat global di dashboard
 
-## File Structure
+## Struktur File
 
 ```
-whack-a-mole/
+whackamole/
 ├── assets/
 │   ├── css/
 │   │   └── auth.css
@@ -133,7 +132,7 @@ whack-a-mole/
 ├── config/
 │   └── database.php
 ├── css/
-│   └── [Game stylesheets and assets]
+│   └── [Stylesheet dan aset game]
 ├── includes/
 │   ├── auth.php
 │   ├── functions.php
@@ -150,38 +149,36 @@ whack-a-mole/
 └── README.md
 ```
 
-## Troubleshooting
+## Pemecahan Masalah
 
-### Database Connection Issues
+### Masalah Koneksi Database
 
-- Verify MAMP services are running
-- Check if MySQL is running on port 8889
-- Ensure database credentials in `config/database.php` match your MAMP settings
+- Periksa apakah layanan XAMPP berjalan
+- Pastikan MySQL berjalan dan dapat diakses
+- Pastikan kredensial database di `config/database.php` sesuai dengan pengaturan XAMPP Anda
 
-### Game Not Starting
+### Game Tidak Bisa Dimulai
 
-- Check browser console for JavaScript errors
-- Ensure all game assets are properly loaded
-- Try clearing browser cache and cookies
+- Periksa konsol browser untuk error JavaScript
+- Pastikan semua aset game dimuat dengan benar
+- Coba bersihkan cache dan cookie browser
 
-### Authentication Problems
+### Masalah Otentikasi
 
-- If registration fails, check if the username or email is already in use
-- For login issues, use the password reset function
-- Session problems can often be resolved by clearing browser cookies
+- Jika pendaftaran gagal, periksa apakah username atau email sudah digunakan
+- Untuk masalah login, gunakan fungsi reset password
+- Masalah sesi sering dapat diatasi dengan membersihkan cookie browser
 
-## Security Notes
+## Catatan Keamanan
 
-- This application uses password hashing for secure storage
-- CSRF protection is implemented for forms
-- Input sanitization helps prevent XSS attacks
-- Session management includes protection against session fixation
+- Aplikasi ini menggunakan hashing password untuk penyimpanan yang aman
+- Perlindungan CSRF diimplementasikan untuk formulir
+- Sanitasi input membantu mencegah serangan XSS
+- Manajemen sesi mencakup perlindungan terhadap fiksasi sesi
 
-## Credits
+## Informasi Tambahan
 
-- Original Whack-A-Mole game assets by [mitri.dvp](https://www.mitri-dvp.com/)
-- Authentication system developed as an extension to the game
-
-## License
-
-This project is for educational purposes only. Game assets and original game code retain their original licenses.
+Jika Anda mengalami masalah port yang berbeda di XAMPP:
+- Secara default, Apache XAMPP berjalan di port 80
+- Jika port 80 sudah digunakan, XAMPP mungkin menggunakan port alternatif (misalnya 8080)
+- Jika Apache berjalan di port alternatif, akses game melalui: `http://localhost:8080/whackamole`
