@@ -5,12 +5,12 @@
  * This file contains the database connection parameters for the authentication system.
  */
 
-// Database credentials for MAMP (default settings)
+// Database credentials for XAMPP (default settings)
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'whackamole_game');
 define('DB_USER', 'root');
-define('DB_PASS', 'root'); // Default MAMP password is 'root'
-define('DB_PORT', '8889'); // MAMP default MySQL port is 8889
+define('DB_PASS', ''); // Default XAMPP password is 'root'
+define('DB_PORT', '3306'); // XAMPP default MySQL port is 3306
 
 // Create database connection
 function connectDB() {
